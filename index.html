@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Fornecedor/Produto</title>
+    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<h1>Cadastro Fornecedor/Produto</h1>
+
+<form id="fornecedorForm" action="#" method="POST">
+
+    <label for="razaoSocial">Razão Social:</label>
+    <input type="text" id="razaoSocial" name="razaoSocial" required><br>
+
+    <label for="nomeFantasia">Nome Fantasia:</label>
+    <input type="text" id="nomeFantasia" name="nomeFantasia" required><br>
+
+    <label for="cnpj">CNPJ:</label>
+    <input type="text" id="cnpj" name="cnpj" required><br>
+
+    <label for="inscricaoEstadual">Inscrição Estadual:</label>
+    <input type="text" id="inscricaoEstadual" name="inscricaoEstadual"><br>
+
+    <label for="inscricaoMunicipal">Inscrição Municipal:</label>
+    <input type="text" id="inscricaoMunicipal" name="inscricaoMunicipal"><br>
+
+    <label for="endereco">Endereço:</label>
+    <input type="text" id="endereco" name="endereco" required><br>
+
+    <label for="contato">Nome da pessoa de contato:</label>
+    <input type="text" id="contato" name="contato" required><br>
+
+    <label for="telefone">Telefone:</label>
+    <input type="text" id="telefone" name="telefone" required><br>
+
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <h2>Tabela de Produtos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Unidade de Medida</th>
+                <th>Quantidade em Estoque</th>
+                <th>Valor Unitário</th>
+                <th>Valor Total</th>
+            </tr>
+        </thead>
+        <tbody id="produtos">
+            <!-- ADD PRODUTOS -->
+        </tbody>
+    </table>
+    <button type="button" onclick="adicionarProduto()">Adicionar Produto</button><br>
+
+    <h2>Tabela de Anexos</h2>
+    <input type="file" id="anexo" name="anexo" required multiple><br>
+    <ul id="anexos">
+    </ul>
+
+    <button type="submit" id="btnSalvarFornecedor">Salvar Fornecedor</button>
+
+</form>
+
+</body>
+</html>
