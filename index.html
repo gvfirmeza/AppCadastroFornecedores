@@ -10,67 +10,156 @@
 </head>
 <body>
 
-<h1>Cadastro Fornecedor/Produto</h1>
+<h2 id="titulo-pagina">Cadastro Fornecedor/Produto</h2>
 
 <form id="fornecedorForm" action="#" method="POST" >
-    <h3>Dados do Fornecedor</h3>
+    
+    <h4 class="card-titulos">Dados do Fornecedor</h4>
 
-    <div class="form-group">
-        <label for="razaoSocial" class="control-label">Razão Social:</label>
-        <input type="text" id="razaoSocial" name="razaoSocial" required class="form-control w-75">
+    <div id="dados-fornecedor">
 
-        <label for="cnpj" class="form-label">CNPJ:</label>
-        <input type="text" id="cnpj" name="cnpj" required class="form-control w-25">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label for="razaoSocial" class="control-label">Razão Social:</label>
+                    <input type="text" id="razaoSocial" name="razaoSocial" required class="form-control">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="cnpj" class="form-label">CNPJ:</label>
+                    <input type="text" id="cnpj" name="cnpj" required class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label for="nomeFantasia" class="form-label">Nome Fantasia:</label>
+                    <input type="text" id="nomeFantasia" name="nomeFantasia" required class="form-control">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="inscricaoEstadual" class="form-label">Inscrição Estadual:</label>
+                    <input type="text" id="inscricaoEstadual" name="inscricaoEstadual" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="CEP" class="form-label">CEP:</label>
+                    <input type="text" id="CEP" name="CEP" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="inscricaoMunicipal" class="form-label">Inscrição Municipal:</label>
+                            <input type="text" id="inscricaoMunicipal" name="inscricaoMunicipal" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-9">
+                    <label for="endereco" class="form-label">Endereço:</label>
+                    <input type="text" id="endereco" name="endereco" required class="form-control">
+                </div>
+
+                <div class="col-md-3">
+                    <label for="numero" class="form-label">Número:</label>
+                    <input type="text" id="numero" name="numero" required class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="contato" class="form-label">Nome da pessoa de contato:</label>
+                    <input type="text" id="contato" name="contato" required class="form-control">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="telefone" class="form-label">Telefone:</label>
+                    <input type="text" id="telefone" name="telefone" required class="form-control">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="email" class="form-label">E-mail:</label>
+                    <input type="email" id="email" name="email" required class="form-control">
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="form-group">
-        <label for="nomeFantasia" class="form-label">Nome Fantasia:</label>
-        <input type="text" id="nomeFantasia" name="nomeFantasia" required class="form-control">
+    <h4 class="card-titulos">Produtos</h4>
 
-        <label for="inscricaoEstadual" class="form-label">Inscrição Estadual:</label>
-        <input type="text" id="inscricaoEstadual" name="inscricaoEstadual" class="form-control">
+    <div class="container" id="tabela-produtos">
+        <div class="produto">
+            <br/>
+            <div class="row">
+                <div class="col-md-1 d-flex align-items-center justify-content-end">
+                    <div class="icon-caixa rounded p-2 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                            <path fill="#fff" d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="col-md-11">
+                    <h4>Produto 1</h4>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="descricao" class="form-label">Descrição:</label>
+                                <input type="text" name="descricao[]" required class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="unidadeMedida" class="form-label">Unidade de Medida:</label>
+                                <input type="text" name="unidadeMedida[]" required class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="quantidadeEstoque" class="form-label">Quantidade em Estoque:</label>
+                                <input type="number" name="quantidadeEstoque[]" required class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="valorUnitario" class="form-label">Valor Unitário:</label>
+                                <input type="number" name="valorUnitario[]" required class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="valorTotal" class="form-label">Valor Total:</label>
+                            <input type="text" name="valorTotal[]" readonly class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="form-group">
-        <label for="CEP" class="form-label">CEP:</label>
-        <input type="text" id="CEP" name="CEP" class="form-control">
-
-        <label for="inscricaoMunicipal" class="form-label">Inscrição Municipal:</label>
-        <input type="text" id="inscricaoMunicipal" name="inscricaoMunicipal" class="form-control">
-    </div>
-
-    <label for="endereco" class="form-label">Endereço:</label>
-    <input type="text" id="endereco" name="endereco" required class="form-control">
-
-    <div class="form-group">
-        <label for="contato" class="form-label">Nome da pessoa de contato:</label>
-        <input type="text" id="contato" name="contato" required class="form-control">
-
-        <label for="telefone" class="form-label">Telefone:</label>
-        <input type="text" id="telefone" name="telefone" required class="form-control">
-
-        <label for="email" class="form-label">E-mail:</label>
-        <input type="email" id="email" name="email" required class="form-control">
-    </div>
-
-    <h2>Tabela de Produtos</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Descrição</th>
-                <th>Unidade de Medida</th>
-                <th>Quantidade em Estoque</th>
-                <th>Valor Unitário</th>
-                <th>Valor Total</th>
-            </tr>
-        </thead>
-        <tbody id="produtos">
-            <!-- ADD PRODUTOS -->
-        </tbody>
-    </table>
-    <button type="button" onclick="adicionarProduto()">Adicionar Produto</button><br>
-
-    <h2>Tabela de Anexos</h2>
+    <button type="button" id="btnAdicionarProduto" class="btn btn-primary">Adicionar Produto</button>
+    
+    <h4 class="card-titulos">Tabela de Anexos</h4>
     <input type="file" id="anexo" name="anexo" required multiple><br>
     <ul id="anexos">
     </ul>
