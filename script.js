@@ -82,13 +82,13 @@ function adicionarProduto() {
     </div>
     `;
 
-  tabelaProdutos.appendChild(divProduto);
+    tabelaProdutos.appendChild(divProduto);
 
-  divProduto.querySelectorAll('input[type="number"]').forEach((input) => {
-    input.addEventListener("input", () => {
-      calcularValorTotal(divProduto);
+    divProduto.querySelectorAll('input[type="number"]').forEach((input) => {
+      input.addEventListener("input", () => {
+        calcularValorTotal(divProduto);
+      });
     });
-  });
 
   divProduto
     .querySelector(".btnRemoverProduto")
@@ -98,18 +98,21 @@ function adicionarProduto() {
     });
 }
 
+document
+  .getElementById("btnAdicionarProduto")
+  .addEventListener("click", adicionarProduto);
+
 function adicionarAnexo(file) {
   const anexosList = document.getElementById("anexos");
 
   const divAnexo = document.createElement("div");
   divAnexo.classList.add("anexo", "col-md-12", "mb-3");
 
-  const fileLabel = document.createElement("span");
-  fileLabel.textContent = file.name;
-  fileLabel.classList.add("col-md-8"); // Define o tamanho da coluna para o nome do arquivo
+  const fileContainer = document.createElement("div");
+  fileContainer.classList.add("d-flex", "justify-content-between");
 
-  const buttonContainer = document.createElement("div");
-  buttonContainer.classList.add("col-md-4"); // Define o tamanho da coluna para os botões
+  const fileIcons = document.createElement("div");
+  fileIcons.classList.add("d-flex");
 
   const deleteButton = document.createElement("button");
   deleteButton.innerHTML = `
@@ -131,18 +134,24 @@ function adicionarAnexo(file) {
 
   const fileLink = document.createElement("a");
   fileLink.innerHTML = `
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
-    <path fill="#fff" d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/>
+    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
   </svg>`;
   fileLink.href = URL.createObjectURL(file);
   fileLink.download = file.name;
   fileLink.classList.add("btn", "btn-primary", "mx-2", "p-1");
 
-  buttonContainer.appendChild(deleteButton);
-  buttonContainer.appendChild(fileLink);
+  fileIcons.appendChild(deleteButton);
+  fileIcons.appendChild(fileLink);
 
-  divAnexo.appendChild(fileLabel);
-  divAnexo.appendChild(buttonContainer);
+  const fileLabel = document.createElement("span");
+  fileLabel.textContent = file.name;
+
+  fileContainer.appendChild(fileIcons);
+  fileContainer.appendChild(fileLabel);
+
+  divAnexo.appendChild(fileContainer);
 
   anexosList.appendChild(divAnexo);
 }
