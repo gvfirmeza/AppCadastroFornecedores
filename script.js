@@ -1,5 +1,14 @@
 let contadorProdutos = 1;
 
+function calcularValorTotal(input) {
+    const row = input.closest('.produto'); // Encontra o elemento pai com a classe 'produto'
+    const quantidadeEstoque = parseFloat(row.querySelector('input[name="quantidadeEstoque[]"]').value);
+    const valorUnitario = parseFloat(row.querySelector('input[name="valorUnitario[]"]').value);
+    const valorTotalInput = row.querySelector('input[name="valorTotal[]"]');
+    const valorTotal = quantidadeEstoque * valorUnitario;
+    valorTotalInput.value = isNaN(valorTotal) ? '' : valorTotal.toFixed(2);
+}
+
 function adicionarProduto() {
   contadorProdutos++;
 
@@ -65,13 +74,13 @@ function adicionarProduto() {
     </div>    
     `;
 
-  tabelaProdutos.appendChild(divProduto);
-
-  divProduto.querySelectorAll('input[type="number"]').forEach((input) => {
-    input.addEventListener("input", () => {
-      calcularValorTotal(divProduto);
+    tabelaProdutos.appendChild(divProduto);
+  
+    divProduto.querySelectorAll('input[type="number"]').forEach((input) => {
+      input.addEventListener("input", () => {
+        calcularValorTotal(divProduto);
+      });
     });
-  });
 
   divProduto
     .querySelector(".btnRemoverProduto")
@@ -79,20 +88,6 @@ function adicionarProduto() {
       divProduto.remove();
       contadorProdutos--;
     });
-}
-
-function calcularValorTotal(divProduto) {
-  const quantidadeEstoque = parseFloat(
-    divProduto.querySelector('input[name="quantidadeEstoque[]"]').value
-  );
-  const valorUnitario = parseFloat(
-    divProduto.querySelector('input[name="valorUnitario[]"]').value
-  );
-  const valorTotalInput = divProduto.querySelector(
-    'input[name="valorTotal[]"]'
-  );
-  const valorTotal = quantidadeEstoque * valorUnitario;
-  valorTotalInput.value = isNaN(valorTotal) ? "" : valorTotal.toFixed(2);
 }
 
 document
@@ -229,3 +224,7 @@ function baixarJSON(event) {
 document
   .getElementById("btnSalvarFornecedor")
   .addEventListener("click", baixarJSON);
+
+document.querySelectorAll('.produto').forEach((produto) => {
+calcularValorTotal(produto);
+});

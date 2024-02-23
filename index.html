@@ -138,13 +138,13 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="quantidadeEstoque" class="form-label">Quantidade em Estoque:</label>
-                                <input type="number" name="quantidadeEstoque[]" required class="form-control">
+                                <input type="number" name="quantidadeEstoque[]" required class="form-control" oninput="calcularValorTotal(this)">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="valorUnitario" class="form-label">Valor Unitário:</label>
-                                <input type="number" name="valorUnitario[]" required class="form-control">
+                                <input type="number" name="valorUnitario[]" required class="form-control" oninput="calcularValorTotal(this)">
                             </div>
                         </div>
                         <div class="col-md-3">
