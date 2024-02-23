@@ -47,8 +47,11 @@ function adicionarProduto() {
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="unidadeMedida" class="form-label">Unidade de Medida:</label>
-                                <input type="text" name="unidadeMedida[]" required class="form-control">
+                            <select name="unidadeMedida[]" required class="form-select">
+                                <option value="cm">cm</option>
+                                <option value="mm">mm</option>
+                                <option value="m">m</option>
+                            </select>
                             </div>
                         </div>
                         <div class="col-md-3">
