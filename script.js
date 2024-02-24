@@ -1,4 +1,21 @@
-let contadorProdutos = 1;
+
+document.getElementById('CEP').addEventListener('blur', function() {
+  var cep = this.value.replace(/\D/g, '');
+
+  if (cep.length !== 8) {
+      return;
+  }
+
+  fetch(`https://viacep.com.br/ws/${cep}/json/`)
+      .then(response => response.json())
+      .then(data => {
+          document.getElementById('endereco').value = data.logradouro;
+          document.getElementById('bairro').value = data.bairro;
+          document.getElementById('municipio').value = data.localidade;
+          document.getElementById('estado').value = data.uf;
+      })
+      .catch(error => console.error('Erro ao buscar CEP:', error));
+});
 
 function calcularValorTotal(input) {
   const row = input.closest(".produto");
@@ -12,6 +29,8 @@ function calcularValorTotal(input) {
   const valorTotal = quantidadeEstoque * valorUnitario;
   valorTotalInput.value = isNaN(valorTotal) ? "" : valorTotal.toFixed(2);
 }
+
+let contadorProdutos = 1;
 
 function adicionarProduto() {
   contadorProdutos++;
@@ -112,7 +131,7 @@ function adicionarAnexo(file) {
   fileContainer.classList.add(
     "d-flex",
     "justify-content-start",
-    "align-items-center"
+    "align-items-center",
   );
 
   const fileIcons = document.createElement("div");
@@ -196,22 +215,23 @@ function baixarJSON(event) {
   const emailContato = document.getElementById("email").value;
 
   const produtos = [];
-  document.querySelectorAll("#produtos tr").forEach((row) => {
-    const descricaoProduto = row.querySelector(
+  document.querySelectorAll(".produto").forEach((produto, index) => {
+    const descricaoProduto = produto.querySelector(
       'input[name="descricao[]"]'
     ).value;
-    const unidadeMedida = row.querySelector(
-      'input[name="unidadeMedida[]"]'
+    const unidadeMedida = produto.querySelector(
+      'select[name="unidadeMedida[]"]'
     ).value;
-    const qtdeEstoque = row.querySelector(
+    const qtdeEstoque = produto.querySelector(
       'input[name="quantidadeEstoque[]"]'
     ).value;
-    const valorUnitario = row.querySelector(
+    const valorUnitario = produto.querySelector(
       'input[name="valorUnitario[]"]'
     ).value;
-    const valorTotal = row.querySelector('input[name="valorTotal[]"]').value;
+    const valorTotal = produto.querySelector('input[name="valorTotal[]"]').value;
 
     produtos.push({
+      indice: index + 1,
       descricaoProduto,
       unidadeMedida,
       qtdeEstoque,
@@ -221,11 +241,12 @@ function baixarJSON(event) {
   });
 
   const anexos = [];
-  document.querySelectorAll("#anexos li").forEach((item, index) => {
-    const nomeArquivo = item.textContent.trim().replace("Excluir", "");
+  document.querySelectorAll("#anexos .anexo").forEach((anexo, index) => {
+    const nomeArquivo = anexo.querySelector("span").textContent.trim();
     anexos.push({
       indice: index + 1,
       nomeArquivo,
+      // Se desejar adicionar o blob do arquivo, pode ser feito aqui
     });
   });
 
